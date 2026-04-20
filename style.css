@@ -398,6 +398,11 @@ header.doodle-header {
 
 /* Mobile & Tablet Responsiveness */
 @media (max-width: 1200px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+        display: block; /* Switch from flex center to allow natural scrolling */
+    }
     .app-container {
         padding: 15px;
         height: auto; /* Allow overflow */
