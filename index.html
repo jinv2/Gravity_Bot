@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重力精灵机器人 | 探索宇宙的重力奥秘</title>
+    <meta name="description" content="加入重力精灵机器人的星际首航！探索地球、月球、木星的不同重力，体验有趣的物理实验。">
+    <meta name="keywords" content="重力, 机器人, 科学教育, 物理交互, Shensist">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;600;800&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+<body class="bg-earth">
+    <div id="launch-overlay" class="launch-overlay">
+        <div class="launch-content">
+            <div class="launch-logo-orb">
+                <img src="assets/logo_ts.webp" alt="Shensist Logo">
+            </div>
+            <h1>重力精灵 Bot</h1>
+            <p>准备好开启你的星际物理探秘了吗？</p>
+            <button id="launch-btn" class="launch-btn">进入实验室 ✨</button>
+        </div>
+    </div>
+    
+    <div class="starfield"></div>
+    <div class="app-container">
+        <!-- Playful Header -->
+        <header class="doodle-header">
+            <div class="logo-container">
+                <a href="https://shensist.top/" target="_blank" class="logo-orb-wrapper">
+                    <img src="logo_ts.webp" alt="Shensist Logo" class="official-logo">
+                </a>
+                <div class="title-group">
+                    <h1 class="logo">重力小精灵</h1>
+                    <p class="subtitle">奇妙重力游乐场 🌈</p>
+                </div>
+            </div>
+            <div class="mission-status">
+                <div id="lyrics-display" class="lyrics-card">
+                    <span id="current-lyric">🎵 准备好和引力一起跳舞了吗？</span>
+                </div>
+                <div class="audio-controls">
+                    <button id="bgm-toggle" class="audio-btn" title="开关欢乐音乐">
+                        <span class="icon">🎵</span>
+                    </button>
+                    <button id="sfx-toggle" class="audio-btn active" title="开关趣怪音效">
+                        <span class="icon">🔔</span>
+                    </button>
+                </div>
+                <span class="mission-tag">今天的目标：开心跳跃！✨</span>
+            </div>
+        </header>
+
+        <main class="main-viewport">
+            <!-- Left: Controls -->
+            <aside class="control-panel doodle-card">
+                <section class="control-group">
+                    <div class="group-header">
+                        <span class="step-num">1</span>
+                        <h3>去哪儿玩呀？</h3>
+                    </div>
+                    <div class="planet-buttons">
+                        <button class="planet-btn active" data-planet="earth" data-g="9.8">
+                            <span class="btn-icon">🌍</span>
+                            <div class="btn-info">
+                                <span class="btn-label">家园地球</span>
+                                <span class="btn-desc">温暖的家</span>
+                            </div>
+                        </button>
+                        <button class="planet-btn" data-planet="moon" data-g="1.6">
+                            <span class="btn-icon">🧀</span>
+                            <div class="btn-info">
+                                <span class="btn-label">芝士月亮</span>
+                                <span class="btn-desc">轻飘飘梦境</span>
+                            </div>
+                        </button>
+                        <button class="planet-btn" data-planet="jupiter" data-g="24.8">
+                            <span class="btn-icon">🥨</span>
+                            <div class="btn-info">
+                                <span class="btn-label">大肚木星</span>
+                                <span class="btn-desc">超级大手臂</span>
+                            </div>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <div class="group-header">
+                        <span class="step-num">2</span>
+                        <h3>书包有多重？</h3>
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="mass-slider" min="10" max="1000" value="100">
+                        <div class="slider-stats">
+                            <span id="mass-display">100</span> <small>KG</small>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="stats-group">
+                    <div class="stat-card">
+                        <label>重力拉拉力</label>
+                        <div id="force-display" class="force-text">刚刚好...</div>
+                    </div>
+                </section>
+
+                <button id="jump-btn" class="jump-action-btn">
+                    超级弹跳！✨
+                </button>
+            </aside>
+
+            <!-- Center: Adventure Canvas -->
+            <section class="viewport-canvas-container doodle-border">
+                <div class="dynamic-overlay"></div>
+                <div class="background-texture"></div>
+                
+                <div id="speech-bubble" class="speech-bubble hidden">
+                    <p id="robot-speech">你好呀！准备好起航了吗？</p>
+                </div>
+
+                <div class="canvas-ui-top">
+                    <div class="telemetry">
+                        <span id="height-meter">高度: 0m</span>
+                        <span id="velocity-meter">速度: 0m/s</span>
+                    </div>
+                </div>
+
+                <canvas id="physics-canvas"></canvas>
+                
+                <div class="ground-doodle"></div>
+                <div class="sun-glow"></div>
+            </section>
+
+            <!-- Right: Explorer Achievements -->
+            <aside class="science-log-panel doodle-card">
+                <h3>🏆 探险成就墙</h3>
+                <div id="log-list" class="log-entries">
+                    <div class="log-placeholder">等待你的精彩一跳...</div>
+                </div>
+                <div class="gravity-fact">
+                    <strong>💡 重力小秘密：</strong>
+                    <p id="fact-text">重力就像一双无形的大手，一直拉着我们的脚丫哦！</p>
+                </div>
+            </aside>
+        </main>
+        
+        <footer class="footer-doodle">
+             <div class="copyright">
+                 &copy; 2026 Crafted by <a href="https://shensist.top/" target="_blank">Shensist Matrix</a> · 给孩子的一份重力魔法
+             </div>
+        </footer>
+    </div>
+
+    <!-- Visual Polish Overlay -->
+    <div class="starfield"></div>
+    <div class="vignette"></div>
+
+    <script src="logic_core.js"></script>
+</body>
+</html>

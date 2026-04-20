@@ -1,0 +1,10 @@
+# System Files
+.DS_Store
+Thumbs.db
+.shensist_history
+.gemini/
+brain/
+*.log
+
+# Temp files
+/tmp/
