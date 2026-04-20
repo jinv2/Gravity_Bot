@@ -26,9 +26,12 @@
 - `*.png`: 自定义生成的星球背景大图。
 - `*.mp3`: 趣怪音效与指南音频。
 
-## 🛡️ 版权声明 (Copyright)
-© 2026 Crafted by **Shensist Matrix**. 
-本项目受 Shensist 专有版权保护，旨在为全球少年儿童提供优质的科学启蒙工具。
+## 🛡️ 版权与许可 (License)
+本项目受 **Shensist Matrix 专属版权协议 (Proprietary License)** 保护。
+- 禁止任何形式的商业使用、二次分发或修改。
+- 仅限个人教育展示及 Shensist 授权课堂使用。
+- 详情请参阅 [LICENSE](LICENSE) 文件。
 
 ---
-*让科学像童话一样迷人！* 🚀✨
+© 2026 Crafted by **Shensist Matrix**. All Rights Reserved.
+
